@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.7.1)
   - Firebase/Core (4.11.0):
     - FirebaseAnalytics (= 4.1.0)
     - FirebaseCore (= 4.0.18)
@@ -27,15 +28,21 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - ReachabilitySwift (4.1.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - Alamofire
   - Firebase/Core
   - GoogleMaps
   - GooglePlaces
   - IQKeyboardManagerSwift
+  - ReachabilitySwift
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -45,8 +52,11 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - IQKeyboardManagerSwift
     - nanopb
+    - ReachabilitySwift
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
   FirebaseCore: b981f47e5254cbcfdeb483355300d743f6fcab2c
@@ -56,7 +66,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   IQKeyboardManagerSwift: 2e7dc7f98c111458c1ea2b373f893e8cf95e2b97
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 68107e237b22fe3f8471c90202eb8f2b80b17cd2
+PODFILE CHECKSUM: 7a0bb4cbcb08caa2e899bb1bc9ca749d6f44323c
 
 COCOAPODS: 1.5.2

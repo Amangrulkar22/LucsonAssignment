@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  LucsonAssignment
+
+  Created by Ashwinkumar Mangrulkar on 26/06/18.
+  Copyright © 2018 Ashwinkumar Mangrulkar. All rights reserved.
+*/
+
+"Enter_Name" = "Enter your name";
+"Enter_Username" = "";
+"Enter_Email" = "";
+"Enter_Password" = "";
+"Enter_Confirm_Password" = "";
+"" = "";

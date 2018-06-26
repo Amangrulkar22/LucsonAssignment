@@ -25,10 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         
         //Register for google map
-        GMSServices.provideAPIKey("AIzaSyArn7QKh31H8vVr-zn35MrCKxHh6kdll3s")
+        GMSServices.provideAPIKey(keyGoogleMap)
         
         // Register for google places
-        GMSPlacesClient.provideAPIKey("AIzaSyDGtvlq3eRDbX8yCDhAI_8Je_gko8f5iGM")
+        GMSPlacesClient.provideAPIKey(keyGooglePlaces)
         
         // Use Firebase library to configure APIs
         FirebaseApp.configure()

@@ -11,6 +11,11 @@ import Firebase
 
 class SignupViewController: UIViewController {
 
+    @IBOutlet weak var txtName: UITextField!
+    @IBOutlet weak var txtUsername: UITextField!
+    @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var txtConfirmPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +28,7 @@ class SignupViewController: UIViewController {
     }
     
     @IBAction func signupAction(_ sender: Any) {
+        
         let homeObj = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         self.navigationController?.pushViewController(homeObj, animated: true)
     }

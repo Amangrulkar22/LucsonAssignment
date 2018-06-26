@@ -11,4 +11,8 @@ pod 'Firebase/Core'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'IQKeyboardManagerSwift'
+pod 'Alamofire'
+pod 'ReachabilitySwift'
+pod 'SVProgressHUD'
+
 end
