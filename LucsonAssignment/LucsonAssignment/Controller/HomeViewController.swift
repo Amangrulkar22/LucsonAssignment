@@ -49,27 +49,10 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         
     }
     
-    //Location Manager delegates
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let location = locations.last
-        mapModel.sourceLatitude = location?.coordinate.latitude
-        mapModel.sourceLongitude = location?.coordinate.longitude
-        
-        btnSource.setTitle("  \(mapModel.sourceLatitude!),\(mapModel.sourceLongitude!)", for: .normal)
-        
-        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 13.0)
-        
-        self.mapView?.animate(to: camera)
-        
-        if mapModel.sourceLatitude != nil && mapModel.sourceLongitude != nil && mapModel.destinationLatitude != nil && mapModel.destinationLongitude != nil {
-            loadCameraView()
-        }
-        
-        //Finally stop updating location otherwise it will come again and again in this delegate
-        self.locationManager.stopUpdatingLocation()
-        
+    @IBAction func signoutAction(_ sender: Any) {
+        let _ = self.navigationController?.popToRootViewController(animated: true)
     }
+    
     
     @IBAction func getCurrentLocAction(_ sender: Any) {
         self.locationManager.startUpdatingLocation()
@@ -155,7 +138,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         })
     }
     
-    // MARK: GOOGLE AUTO COMPLETE DELEGATE
+    //MARK: Google autocomplete delegate methods
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
@@ -186,6 +169,29 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         self.dismiss(animated: true, completion: nil) // when cancel search
+    }
+    
+    
+    //MARK:- Location Manager delegates
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations.last
+        mapModel.sourceLatitude = location?.coordinate.latitude
+        mapModel.sourceLongitude = location?.coordinate.longitude
+        
+        btnSource.setTitle("  \(mapModel.sourceLatitude!),\(mapModel.sourceLongitude!)", for: .normal)
+        
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 13.0)
+        
+        self.mapView?.animate(to: camera)
+        
+        if mapModel.sourceLatitude != nil && mapModel.sourceLongitude != nil && mapModel.destinationLatitude != nil && mapModel.destinationLongitude != nil {
+            loadCameraView()
+        }
+        
+        //Finally stop updating location otherwise it will come again and again in this delegate
+        self.locationManager.stopUpdatingLocation()
+        
     }
     
     override func didReceiveMemoryWarning() {
