@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class SignupViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +20,11 @@ class SignupViewController: UIViewController {
 
     @IBAction func backAction(_ sender: Any) {
         let _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func signupAction(_ sender: Any) {
+        let homeObj = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        self.navigationController?.pushViewController(homeObj, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
