@@ -19,12 +19,13 @@
 		A0158C6D20E223C50036CC4F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0158C6C20E223C50036CC4F /* GoogleService-Info.plist */; };
 		A0158C6F20E226B00036CC4F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0158C6E20E226B00036CC4F /* HomeViewController.swift */; };
 		A0158C7120E250890036CC4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0158C7020E250890036CC4F /* Localizable.strings */; };
-		A0158C7420E253650036CC4F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0158C7320E253650036CC4F /* Extensions.swift */; };
-		A0158C7620E25DB80036CC4F /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0158C7520E25DB80036CC4F /* Webservice.swift */; };
-		A0158C7820E25E1E0036CC4F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0158C7720E25E1E0036CC4F /* Constant.swift */; };
 		A0158C7B20E262710036CC4F /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0158C7A20E262710036CC4F /* CustomAlertView.swift */; };
 		A0158C7D20E264EE0036CC4F /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0158C7C20E264EE0036CC4F /* MapModel.swift */; };
 		A0158C7F20E276F40036CC4F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0158C7E20E276F40036CC4F /* CoreLocation.framework */; };
+		A04924CA20E3899500E13085 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04924C520E3899400E13085 /* Extensions.swift */; };
+		A04924CB20E3899500E13085 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04924C720E3899400E13085 /* Constant.swift */; };
+		A04924CC20E3899500E13085 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04924C920E3899500E13085 /* Webservice.swift */; };
+		A04924CF20E389E100E13085 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04924CE20E389E100E13085 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,12 +43,13 @@
 		A0158C6C20E223C50036CC4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0158C6E20E226B00036CC4F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A0158C7020E250890036CC4F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		A0158C7320E253650036CC4F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		A0158C7520E25DB80036CC4F /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
-		A0158C7720E25E1E0036CC4F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A0158C7A20E262710036CC4F /* CustomAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		A0158C7C20E264EE0036CC4F /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		A0158C7E20E276F40036CC4F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A04924C520E3899400E13085 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A04924C720E3899400E13085 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A04924C920E3899500E13085 /* Webservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		A04924CE20E389E100E13085 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		A331354B63D645F44B5561CA /* Pods_LucsonAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LucsonAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA94F004574353EFD60B7CD /* Pods-LucsonAssignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucsonAssignment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LucsonAssignment/Pods-LucsonAssignment.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,10 +98,10 @@
 			isa = PBXGroup;
 			children = (
 				A0158C4F20E21E0D0036CC4F /* AppDelegate.swift */,
-				A0158C7220E253470036CC4F /* Helper */,
 				A0158C6120E21E330036CC4F /* Model */,
 				A0158C6220E21E3D0036CC4F /* View */,
 				A0158C6320E21E420036CC4F /* Controller */,
+				A0158C7220E253470036CC4F /* Helper */,
 				A0158C5620E21E100036CC4F /* Assets.xcassets */,
 				A0158C5820E21E100036CC4F /* LaunchScreen.storyboard */,
 				A0158C5B20E21E100036CC4F /* Info.plist */,
@@ -140,10 +142,11 @@
 		A0158C7220E253470036CC4F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				A04924CD20E389D300E13085 /* LocationManager */,
+				A04924C620E3899400E13085 /* Constant */,
+				A04924C420E3899400E13085 /* Extensions */,
+				A04924C820E3899500E13085 /* WebServices */,
 				A0158C7920E262710036CC4F /* CustomAlertView */,
-				A0158C7320E253650036CC4F /* Extensions.swift */,
-				A0158C7720E25E1E0036CC4F /* Constant.swift */,
-				A0158C7520E25DB80036CC4F /* Webservice.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -154,6 +157,38 @@
 				A0158C7A20E262710036CC4F /* CustomAlertView.swift */,
 			);
 			path = CustomAlertView;
+			sourceTree = "<group>";
+		};
+		A04924C420E3899400E13085 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A04924C520E3899400E13085 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A04924C620E3899400E13085 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				A04924C720E3899400E13085 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		A04924C820E3899500E13085 /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				A04924C920E3899500E13085 /* Webservice.swift */,
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		A04924CD20E389D300E13085 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				A04924CE20E389E100E13085 /* LocationManager.swift */,
+			);
+			path = LocationManager;
 			sourceTree = "<group>";
 		};
 		CCFE8184E283296FD8CDBBEF /* Pods */ = {
@@ -283,19 +318,23 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LucsonAssignment/Pods-LucsonAssignment-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,16 +350,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0158C7B20E262710036CC4F /* CustomAlertView.swift in Sources */,
+				A04924CA20E3899500E13085 /* Extensions.swift in Sources */,
 				A0158C5220E21E0D0036CC4F /* SigninViewController.swift in Sources */,
 				A0158C6920E21E9C0036CC4F /* SigninModel.swift in Sources */,
-				A0158C7820E25E1E0036CC4F /* Constant.swift in Sources */,
-				A0158C7620E25DB80036CC4F /* Webservice.swift in Sources */,
+				A04924CC20E3899500E13085 /* Webservice.swift in Sources */,
 				A0158C6B20E21F5B0036CC4F /* SignupViewController.swift in Sources */,
 				A0158C7D20E264EE0036CC4F /* MapModel.swift in Sources */,
 				A0158C5020E21E0D0036CC4F /* AppDelegate.swift in Sources */,
+				A04924CF20E389E100E13085 /* LocationManager.swift in Sources */,
+				A04924CB20E3899500E13085 /* Constant.swift in Sources */,
 				A0158C6720E21E920036CC4F /* SignupModel.swift in Sources */,
 				A0158C6F20E226B00036CC4F /* HomeViewController.swift in Sources */,
-				A0158C7420E253650036CC4F /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,10 +508,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LucsonAssignment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.lucson;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -487,10 +524,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LucsonAssignment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.lucson;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

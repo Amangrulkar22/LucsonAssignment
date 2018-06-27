@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LucsonAssignment/Controller/HomeViewController.swift"
-            timestampString = "551716978.9348119"
+            timestampString = "551800232.770862"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "loadCameraView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

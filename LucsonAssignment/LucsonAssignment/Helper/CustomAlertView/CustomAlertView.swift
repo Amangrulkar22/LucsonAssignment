@@ -87,14 +87,14 @@ import UIKit
         
         UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
             label.frame = basketTopFrame
+        },  completion: {
+            (value: Bool) in
+            UIView.animate(withDuration: 2.0, delay: 2.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
+                label.alpha = 0
             },  completion: {
                 (value: Bool) in
-                UIView.animate(withDuration: 2.0, delay: 2.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
-                    label.alpha = 0
-                    },  completion: {
-                        (value: Bool) in
-                        label.removeFromSuperview()
-                })
+                label.removeFromSuperview()
+            })
         })
     }
 }

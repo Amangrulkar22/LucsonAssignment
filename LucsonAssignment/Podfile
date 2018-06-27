@@ -8,6 +8,9 @@ target 'LucsonAssignment' do
   # Pods for LucsonAssignment
 
 pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'Firebase/Storage'
+pod 'Firebase/Auth'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'IQKeyboardManagerSwift'

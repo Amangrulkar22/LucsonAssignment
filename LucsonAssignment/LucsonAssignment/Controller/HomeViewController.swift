@@ -10,23 +10,28 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import SVProgressHUD
-import CoreLocation
+import Firebase
 
 enum ButtonType: Int {
     case Source
     case Destintaion
 }
 
-class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegate, CLLocationManagerDelegate {
+class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegate, LocationProtocol {
     
     /// Mapview object
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var btnCurrentLocation: UIButton!
     @IBOutlet weak var btnSource: UIButton!
     @IBOutlet weak var btnDestination: UIButton!
-
+    
+    /// Create map model object
     var mapModel = MapModel()
-    var locationManager = CLLocationManager()
+    
+    /// Create location manager object
+    var locationObj = LocationManager.sharedInstance
+    
+    /// Boo to check condition source
     var isSourceOrDestination: Bool = false //false - source, true - destination
     
     override func viewDidLoad() {
@@ -37,11 +42,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         self.navigationItem.setHidesBackButton(true, animated:true)
         
         mapView.isMyLocationEnabled = true
-        
-        //Location Manager code to fetch current location
-        self.locationManager.delegate = self
-        self.locationManager.startUpdatingLocation()
-        
+        locationObj.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,12 +51,23 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
     }
     
     @IBAction func signoutAction(_ sender: Any) {
+        signOut()
+    }
+    
+    func signOut() {
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
         let _ = self.navigationController?.popToRootViewController(animated: true)
     }
     
-    
     @IBAction func getCurrentLocAction(_ sender: Any) {
-        self.locationManager.startUpdatingLocation()
+        locationObj.locationManager.startUpdatingLocation()
     }
     
     @IBAction func sourceDestinationAction(_ sender: Any) {
@@ -90,7 +102,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
             
             if success && (responseDictionary != nil)
             {
-//                print("responseDictionary \(responseDictionary!)")
+                //                print("responseDictionary \(responseDictionary!)")
                 
                 let routes = responseDictionary?.value(forKey: "routes") as! [AnyObject]
                 
@@ -148,17 +160,25 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         if !isSourceOrDestination {
             mapModel.sourceLatitude = place.coordinate.latitude
             mapModel.sourceLongitude = place.coordinate.longitude
+            mapModel.sourceTitle = place.name
             
-            btnSource.setTitle("  \(mapModel.sourceLatitude!),\(mapModel.sourceLongitude!)", for: .normal)
-
+            btnSource.setTitle("  \(mapModel.sourceTitle)", for: .normal)
+            
         }else {
             mapModel.destinationLatitude = place.coordinate.latitude
             mapModel.destinationLongitude = place.coordinate.longitude
+            mapModel.destinationTitle = place.name
             
-            btnDestination.setTitle("  \(mapModel.destinationLatitude!),\(mapModel.destinationLongitude!)", for: .normal)
+            btnDestination.setTitle("  \(mapModel.destinationTitle)", for: .normal)
         }
         
-        loadCameraView()
+        if mapModel.sourceLatitude != nil && mapModel.sourceLongitude != nil && mapModel.destinationLatitude != nil && mapModel.destinationLongitude != nil {
+            loadCameraView()
+        }else if ((mapModel.sourceLatitude != nil && mapModel.sourceLongitude != nil) && (mapModel.destinationLatitude == nil && mapModel.destinationLongitude == nil)) {
+            let cameraPosition = GMSCameraPosition.camera(withLatitude: self.mapModel.sourceLatitude!, longitude: self.mapModel.sourceLongitude!, zoom: 13)
+            self.mapView?.animate(to: cameraPosition)
+        }
+
         self.dismiss(animated: true, completion: nil) // dismiss after select place
         
     }
@@ -171,28 +191,25 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         self.dismiss(animated: true, completion: nil) // when cancel search
     }
     
-    
-    //MARK:- Location Manager delegates
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    /// Delegate method of locaiton manager
+    ///
+    /// - Parameter location: location object
+    func udpatedLocation(location: CLLocation) {
         
-        let location = locations.last
-        mapModel.sourceLatitude = location?.coordinate.latitude
-        mapModel.sourceLongitude = location?.coordinate.longitude
+        mapModel.sourceLatitude = location.coordinate.latitude
+        mapModel.sourceLongitude = location.coordinate.longitude
         
         btnSource.setTitle("  \(mapModel.sourceLatitude!),\(mapModel.sourceLongitude!)", for: .normal)
         
-        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 13.0)
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 13.0)
         
         self.mapView?.animate(to: camera)
         
         if mapModel.sourceLatitude != nil && mapModel.sourceLongitude != nil && mapModel.destinationLatitude != nil && mapModel.destinationLongitude != nil {
             loadCameraView()
         }
-        
-        //Finally stop updating location otherwise it will come again and again in this delegate
-        self.locationManager.stopUpdatingLocation()
-        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

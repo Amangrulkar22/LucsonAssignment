@@ -9,8 +9,8 @@
 import Foundation
 
 struct SignupModel {
-    var username: String?
-    var password: String?
-    var confirmPassword: String?
     var name: String?
+    var username: String?
+    var email: String?
+    var password: String?
 }
