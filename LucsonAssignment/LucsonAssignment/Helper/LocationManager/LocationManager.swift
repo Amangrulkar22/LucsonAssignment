@@ -17,7 +17,7 @@ protocol LocationProtocol {
 class LocationManager: NSObject, CLLocationManagerDelegate {
     
     /// Singleton instance of LocationManager
-    static let sharedInstance = LocationManager()
+    static var sharedInstance = LocationManager()
     
     /// Create location manager object
     var locationManager = CLLocationManager()
@@ -44,4 +44,5 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
         
     }
+   
 }

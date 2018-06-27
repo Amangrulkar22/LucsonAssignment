@@ -43,17 +43,20 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         
         mapView.isMyLocationEnabled = true
         locationObj.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        locationObj.locationManager.startUpdatingLocation()
         
+        self.mapView.bringSubview(toFront: self.btnCurrentLocation)
+
     }
-    
+
+    /// Signout action method
+    ///
+    /// - Parameter sender: button object
     @IBAction func signoutAction(_ sender: Any) {
         signOut()
     }
     
+    /// Signout handle method
     func signOut() {
         
         let firebaseAuth = Auth.auth()
@@ -70,15 +73,16 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         locationObj.locationManager.startUpdatingLocation()
     }
     
+    /// Soruce or destination action method
+    ///
+    /// - Parameter sender: button object
     @IBAction func sourceDestinationAction(_ sender: Any) {
         let button = sender as! UIButton
         
         switch button.tag {
         case ButtonType.Source.rawValue:
-            print("source button")
             isSourceOrDestination = false
         case ButtonType.Destintaion.rawValue:
-            print("destination button")
             isSourceOrDestination = true
         default:
             print("default case")
@@ -131,7 +135,6 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
                     bounds = bounds.includingCoordinate(markerDestination.position)
                     
                     let path = GMSPath.init(fromEncodedPath: points)
-                    //GMSPath.fromEncodedPath(parsedData["routes"][0]["overview_polyline"]["points"].string!)
                     let singleLine = GMSPolyline.init(path: path)
                     singleLine.strokeWidth = 3
                     singleLine.strokeColor = UIColor.red
@@ -139,7 +142,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
                     self.mapView.addSubview(mapView)
                     self.mapView.bringSubview(toFront: self.btnCurrentLocation)
                     
-                    let update = GMSCameraUpdate.fit(bounds, withPadding: 50)
+                    let update = GMSCameraUpdate.fit(bounds, withPadding: 20)
                     mapView.animate(with: update)
                     
                 }else
@@ -153,10 +156,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
     //MARK: Google autocomplete delegate methods
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        
-        //        let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)
-        //        self.googleMapsView.camera = camera
-        
+
         if !isSourceOrDestination {
             mapModel.sourceLatitude = place.coordinate.latitude
             mapModel.sourceLongitude = place.coordinate.longitude
@@ -176,7 +176,11 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
             loadCameraView()
         }else if ((mapModel.sourceLatitude != nil && mapModel.sourceLongitude != nil) && (mapModel.destinationLatitude == nil && mapModel.destinationLongitude == nil)) {
             let cameraPosition = GMSCameraPosition.camera(withLatitude: self.mapModel.sourceLatitude!, longitude: self.mapModel.sourceLongitude!, zoom: 13)
-            self.mapView?.animate(to: cameraPosition)
+            
+            DispatchQueue.main.async {
+                self.mapView.animate(to: cameraPosition)
+            }
+            
         }
 
         self.dismiss(animated: true, completion: nil) // dismiss after select place
