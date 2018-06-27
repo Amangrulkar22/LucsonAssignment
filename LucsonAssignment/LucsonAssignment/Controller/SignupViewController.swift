@@ -46,7 +46,6 @@ class SignupViewController: UIViewController {
         SVProgressHUD.show()
         
         DatabaseManager.sharedInstance.userSignup(signupModel) { (success, error) in
-            
             SVProgressHUD.dismiss()
             
             if success {

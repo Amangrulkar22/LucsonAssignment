@@ -20,8 +20,6 @@ class SigninViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        txtEmail.text = "q@gmail.com"
-        txtPassword.text = "123456"
     }
     
     @IBAction func signinAction(_ sender: Any) {
@@ -38,7 +36,6 @@ class SigninViewController: UIViewController {
         SVProgressHUD.show()
         
         DatabaseManager.sharedInstance.userSignin(signinModel) { (success, error) in
-            
             SVProgressHUD.dismiss()
             
             if success {
