@@ -7,12 +7,14 @@
 //
 
 import UIKit
-import Firebase
 import SVProgressHUD
 
 class SigninViewController: UIViewController {
     
+    /// textfield email
     @IBOutlet weak var txtEmail: UITextField!
+    
+    /// textfield password
     @IBOutlet weak var txtPassword: UITextField!
     
     
@@ -22,6 +24,9 @@ class SigninViewController: UIViewController {
         
     }
     
+    /// Signin actio method
+    ///
+    /// - Parameter sender: button object
     @IBAction func signinAction(_ sender: Any) {
         
         guard let email = txtEmail.text, let password = txtPassword.text else {
@@ -29,6 +34,7 @@ class SigninViewController: UIViewController {
             return
         }
         
+        // configure signin model
         var signinModel = SigninModel()
         signinModel.email = email
         signinModel.password = password

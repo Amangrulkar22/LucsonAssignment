@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Map model
+
 struct MapModel {
     var sourceLatitude: Double?
     var sourceLongitude: Double?

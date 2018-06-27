@@ -7,3 +7,4 @@
 */
 
 "Error_Signout" = "Error while signout user";
+"ALERT_SERVER_ERROR" = "Server error";

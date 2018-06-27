@@ -21,10 +21,3 @@ let Firebase_Database_Url: String = "https://lucsonassignment.firebaseio.com/"
 
 /// Database instance
 let UserTable: String = "users"
-
-/// Signup fields
-let keyName: String = "name"
-let keyUsername: String = "username"
-let keyEmail: String = "email"
-let keyPassword: String = "password"
-

@@ -7,36 +7,45 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
 import SVProgressHUD
 
 class SignupViewController: UIViewController {
     
+    /// textfield name
     @IBOutlet weak var txtName: UITextField!
+    
+    /// textfield username
     @IBOutlet weak var txtUsername: UITextField!
+    
+    /// textfield email
     @IBOutlet weak var txtEmail: UITextField!
+    
+    /// textfield password
     @IBOutlet weak var txtPassword: UITextField!
-    
-    var ref: DatabaseReference?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
     }
     
+    /// Back action
+    ///
+    /// - Parameter sender: button object
     @IBAction func backAction(_ sender: Any) {
         let _ = self.navigationController?.popViewController(animated: true)
     }
     
+    /// Signup action
+    ///
+    /// - Parameter sender: button object
     @IBAction func signupAction(_ sender: Any) {
         
         guard let name = txtName.text, let username = txtUsername.text, let email = txtEmail.text, let password = txtPassword.text else {
             return
         }
         
+        // configure signup model
         var signupModel = SignupModel()
         signupModel.name = name
         signupModel.username = username
@@ -58,15 +67,12 @@ class SignupViewController: UIViewController {
                 CustomAlertView.showNegativeAlert((error?.localizedDescription)!)
             }
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     /*
      // MARK: - Navigation

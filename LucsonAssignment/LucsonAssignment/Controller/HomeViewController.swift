@@ -10,7 +10,6 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import SVProgressHUD
-import Firebase
 
 enum ButtonType: Int {
     case Source
@@ -21,8 +20,14 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
     
     /// Mapview object
     @IBOutlet weak var mapView: GMSMapView!
+    
+    /// current location button object
     @IBOutlet weak var btnCurrentLocation: UIButton!
+    
+    /// source button object
     @IBOutlet weak var btnSource: UIButton!
+    
+    /// destination button object
     @IBOutlet weak var btnDestination: UIButton!
     
     /// Create map model object

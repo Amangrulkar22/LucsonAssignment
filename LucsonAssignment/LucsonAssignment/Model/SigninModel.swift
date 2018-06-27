@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Signin model
+
 struct SigninModel {
     var email: String?
     var password: String?

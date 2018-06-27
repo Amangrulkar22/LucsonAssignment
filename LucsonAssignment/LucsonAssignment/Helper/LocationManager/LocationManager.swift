@@ -25,6 +25,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     /// delegate object to call protocol method
     var delegate: LocationProtocol?
     
+    /// Initialization
     override init() {
         super.init()
         
@@ -42,7 +43,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
         //Finally stop updating location otherwise it will come again and again in this delegate
         self.locationManager.stopUpdatingLocation()
-        
     }
    
 }

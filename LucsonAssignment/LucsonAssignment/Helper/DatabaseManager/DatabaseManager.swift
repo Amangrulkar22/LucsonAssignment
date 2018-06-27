@@ -8,13 +8,22 @@
 
 import Foundation
 import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class DatabaseManager: NSObject {
     
+    /// DatabaseManager singleton object
     static let sharedInstance = DatabaseManager()
     
+    /// Database reference
     var ref: DatabaseReference?
     
+    /// User signup database method
+    ///
+    /// - Parameters:
+    ///   - parameter: SignupModel object
+    ///   - withCompletionHandler: Event trigger
     func userSignup(_ parameter:SignupModel, _ withCompletionHandler:@escaping (_ success:Bool, _ error:Error?)->Void) {
         Auth.auth().createUser(withEmail: parameter.email!, password: parameter.password!) { (user: User?, err) in
             
@@ -30,7 +39,7 @@ class DatabaseManager: NSObject {
             //Successfully authenticated user
             self.ref = Database.database().reference(fromURL: Firebase_Database_Url)
             let usersReference = self.ref?.child(UserTable).child(uid)
-            let values = [keyName: parameter.name!, keyUsername: parameter.username!, keyEmail: parameter.email!]
+            let values = ["name": parameter.name!, "username": parameter.username!, "email": parameter.email!]
             
             usersReference?.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
@@ -45,6 +54,12 @@ class DatabaseManager: NSObject {
             })
         }
     }
+    
+    /// User signin database method
+    ///
+    /// - Parameters:
+    ///   - parameter: SigninModel object
+    ///   - withCompletionHandler: Event trigger
     func userSignin(_ parameter:SigninModel, _ withCompletionHandler:@escaping (_ success:Bool, _ error:Error?)->Void)
     {
         Auth.auth().signInAndRetrieveData(withEmail: parameter.email!, password: parameter.password!) { (user, err) in
@@ -58,7 +73,9 @@ class DatabaseManager: NSObject {
         }
     }
     
-    /// Signout method
+    /// Signout database method
+    ///
+    /// - Parameter withCompletionHandler: Event trigger
     func userSignout(_ withCompletionHandler:@escaping (_ success:Bool, _ error:Error?)->Void)
     {
         let firebaseAuth = Auth.auth()

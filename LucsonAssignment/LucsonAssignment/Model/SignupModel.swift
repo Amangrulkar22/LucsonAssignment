@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Signup model
+
 struct SignupModel {
     var name: String?
     var username: String?
