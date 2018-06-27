@@ -37,41 +37,30 @@ class SignupViewController: UIViewController {
             return
         }
         
+        var signupModel = SignupModel()
+        signupModel.name = name
+        signupModel.username = username
+        signupModel.email = email
+        signupModel.password = password
+        
         SVProgressHUD.show()
         
-        Auth.auth().createUser(withEmail: email, password: password) { (user: User?, err) in
+        DatabaseManager.sharedInstance.userSignup(signupModel) { (success, error) in
             
             SVProgressHUD.dismiss()
             
-            if err != nil {
-                CustomAlertView.showNegativeAlert((err?.localizedDescription)!)
-                return
-            }
-            
-            guard let uid = user?.uid else {
-                return
-            }
-            
-            //Successfully authenticated user
-            self.ref = Database.database().reference(fromURL: "https://lucsonassignment.firebaseio.com/")
-            let usersReference = self.ref?.child("users").child(uid)
-            let values = ["name": name, "username": username, "email": email]
-            
-            usersReference?.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                
-                if err != nil {
-                    CustomAlertView.showNegativeAlert((err?.localizedDescription)!)
-                    return
-                }
-                
-                // show registration successful message
+            if success {
                 CustomAlertView.showPositiveAlert("User Registered successfully")
                 
                 let homeObj = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                 self.navigationController?.pushViewController(homeObj, animated: true)
                 
-            })
+            }else {
+                CustomAlertView.showNegativeAlert((error?.localizedDescription)!)
+            }
         }
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

@@ -6,9 +6,4 @@
   Copyright © 2018 Ashwinkumar Mangrulkar. All rights reserved.
 */
 
-"Enter_Name" = "Enter your name";
-"Enter_Username" = "Enter username";
-"Enter_Email" = "Enter email";
-"Enter_Password" = "Enter password";
-"Enter_Confirm_Password" = "Enter confirm password";
-"Password_Not_Same" = "Password and confirm password not same";
+"Error_Signout" = "Error while signout user";

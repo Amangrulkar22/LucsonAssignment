@@ -12,10 +12,12 @@ import Reachability
 
 class Webservice: NSObject {
     
+    static let sharedInstance = Webservice()
+    
     /// Function to check Imternet Connection available or not
     ///
     /// - Returns: return bool value
-    class func isInternetAvailable()->Bool
+    func isInternetAvailable()->Bool
     {
         //declare this property where it won't go out of scope relative to your listener
         let reachability = Reachability()!
@@ -37,7 +39,7 @@ class Webservice: NSObject {
     ///   - destinationLat: Destination Latitude
     ///   - destinationLong: Destination Longitude
     ///   - withCompletionHandler: Response
-    class func webServiceGetRouteCoordinates(_ parameter:MapModel, _ withCompletionHandler:@escaping (_ success:Bool, _ responseDictionary:AnyObject?, _ error:NSError?)->Void)
+    func webServiceGetRouteCoordinates(_ parameter:MapModel, _ withCompletionHandler:@escaping (_ success:Bool, _ responseDictionary:AnyObject?, _ error:NSError?)->Void)
     {
         //--Checking internet
         if isInternetAvailable()==false

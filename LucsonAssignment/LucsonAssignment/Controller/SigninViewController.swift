@@ -31,20 +31,22 @@ class SigninViewController: UIViewController {
             return
         }
         
+        var signinModel = SigninModel()
+        signinModel.email = email
+        signinModel.password = password
+        
         SVProgressHUD.show()
         
-        Auth.auth().signInAndRetrieveData(withEmail: email, password: password) { (user, err) in
+        DatabaseManager.sharedInstance.userSignin(signinModel) { (success, error) in
             
             SVProgressHUD.dismiss()
             
-            if err != nil {
-                CustomAlertView.showNegativeAlert((err?.localizedDescription)!)
-                return
+            if success {
+                let homeObj = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                self.navigationController?.pushViewController(homeObj, animated: true)
+            }else {
+                CustomAlertView.showNegativeAlert((error?.localizedDescription)!)
             }
-            
-            let homeObj = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            self.navigationController?.pushViewController(homeObj, animated: true)
-            
         }
     }
     

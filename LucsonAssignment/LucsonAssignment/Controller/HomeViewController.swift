@@ -46,27 +46,20 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         locationObj.locationManager.startUpdatingLocation()
         
         self.mapView.bringSubview(toFront: self.btnCurrentLocation)
-
+        
     }
-
+    
     /// Signout action method
     ///
     /// - Parameter sender: button object
     @IBAction func signoutAction(_ sender: Any) {
-        signOut()
-    }
-    
-    /// Signout handle method
-    func signOut() {
-        
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+        DatabaseManager.sharedInstance.userSignout { (success, error) in
+            if success {
+                let _ = self.navigationController?.popToRootViewController(animated: true)
+            }else {
+                CustomAlertView.showNegativeAlert(NSLocalizedString("Error_Signout", comment: ""))
+            }
         }
-        
-        let _ = self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func getCurrentLocAction(_ sender: Any) {
@@ -98,7 +91,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         
         SVProgressHUD.show()
         
-        Webservice.webServiceGetRouteCoordinates(mapModel, { (success, responseDictionary, error) in
+        Webservice.sharedInstance.webServiceGetRouteCoordinates(mapModel, { (success, responseDictionary, error) in
             
             SVProgressHUD.dismiss()
             
@@ -156,7 +149,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
     //MARK: Google autocomplete delegate methods
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-
+        
         if !isSourceOrDestination {
             mapModel.sourceLatitude = place.coordinate.latitude
             mapModel.sourceLongitude = place.coordinate.longitude
@@ -182,7 +175,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
             }
             
         }
-
+        
         self.dismiss(animated: true, completion: nil) // dismiss after select place
         
     }

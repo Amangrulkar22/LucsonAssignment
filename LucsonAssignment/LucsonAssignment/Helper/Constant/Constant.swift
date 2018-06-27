@@ -17,13 +17,14 @@ let keyGooglePlaces: String = "AIzaSyDGtvlq3eRDbX8yCDhAI_8Je_gko8f5iGM"
 /// Api Urls
 var Google_Base_Url : String = "https://maps.googleapis.com/maps/api/"
 let Url_Get_Route = Google_Base_Url + "directions/json?"
+let Firebase_Database_Url: String = "https://lucsonassignment.firebaseio.com/"
 
 /// Database instance
-let DatabaseUserTable: String = "users"
+let UserTable: String = "users"
 
 /// Signup fields
-let name: String = "name"
-let username: String = "username"
-let email: String = "email"
-let password: String = "password"
+let keyName: String = "name"
+let keyUsername: String = "username"
+let keyEmail: String = "email"
+let keyPassword: String = "password"
 

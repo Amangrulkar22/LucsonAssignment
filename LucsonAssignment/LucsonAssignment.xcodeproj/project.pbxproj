@@ -26,6 +26,7 @@
 		A04924CB20E3899500E13085 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04924C720E3899400E13085 /* Constant.swift */; };
 		A04924CC20E3899500E13085 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04924C920E3899500E13085 /* Webservice.swift */; };
 		A04924CF20E389E100E13085 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04924CE20E389E100E13085 /* LocationManager.swift */; };
+		A04924D220E3D77C00E13085 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04924D120E3D77C00E13085 /* DatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		A04924C720E3899400E13085 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A04924C920E3899500E13085 /* Webservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		A04924CE20E389E100E13085 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A04924D120E3D77C00E13085 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		A331354B63D645F44B5561CA /* Pods_LucsonAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LucsonAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA94F004574353EFD60B7CD /* Pods-LucsonAssignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucsonAssignment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LucsonAssignment/Pods-LucsonAssignment.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 		A0158C7220E253470036CC4F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				A04924D020E3D76D00E13085 /* DatabaseManager */,
 				A04924CD20E389D300E13085 /* LocationManager */,
 				A04924C620E3899400E13085 /* Constant */,
 				A04924C420E3899400E13085 /* Extensions */,
@@ -189,6 +192,14 @@
 				A04924CE20E389E100E13085 /* LocationManager.swift */,
 			);
 			path = LocationManager;
+			sourceTree = "<group>";
+		};
+		A04924D020E3D76D00E13085 /* DatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				A04924D120E3D77C00E13085 /* DatabaseManager.swift */,
+			);
+			path = DatabaseManager;
 			sourceTree = "<group>";
 		};
 		CCFE8184E283296FD8CDBBEF /* Pods */ = {
@@ -351,6 +362,7 @@
 			files = (
 				A0158C7B20E262710036CC4F /* CustomAlertView.swift in Sources */,
 				A04924CA20E3899500E13085 /* Extensions.swift in Sources */,
+				A04924D220E3D77C00E13085 /* DatabaseManager.swift in Sources */,
 				A0158C5220E21E0D0036CC4F /* SigninViewController.swift in Sources */,
 				A0158C6920E21E9C0036CC4F /* SigninModel.swift in Sources */,
 				A04924CC20E3899500E13085 /* Webservice.swift in Sources */,
@@ -508,7 +520,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LucsonAssignment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.lucson;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -524,7 +539,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = LucsonAssignment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ashwin.lucson;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
