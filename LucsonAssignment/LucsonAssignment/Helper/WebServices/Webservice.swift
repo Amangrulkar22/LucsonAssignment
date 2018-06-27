@@ -49,7 +49,7 @@ class Webservice: NSObject {
         }
         
         let url = String(format:"%@&origin=%f,%f&destination=%f,%f&key=%@", Url_Get_Route, parameter.sourceLatitude!, parameter.sourceLongitude!, parameter.destinationLatitude!, parameter.destinationLongitude!, keyGoogleMap)
-        print("url \(url)")
+//        print("url \(url)")
         
         Alamofire.request(url, parameters: nil)
             .responseJSON { response in

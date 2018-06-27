@@ -140,7 +140,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
                     self.mapView.addSubview(mapView)
                     self.mapView.bringSubview(toFront: self.btnCurrentLocation)
                     
-                    let update = GMSCameraUpdate.fit(bounds, withPadding: 20)
+                    let update = GMSCameraUpdate.fit(bounds, withPadding: 30)
                     mapView.animate(with: update)
                     
                 }else
