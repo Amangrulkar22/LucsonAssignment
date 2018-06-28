@@ -110,6 +110,9 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
                 
                 if routes.count > 0
                 {
+                    //remove markers before add
+                    self.removeMarker()
+                    
                     let polyline = routes[0].value(forKey: "overview_polyline") as AnyObject
                     let points = polyline.value(forKey: "points") as! String
                     
@@ -151,6 +154,14 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         })
     }
     
+    /// Remove marker on map
+    func removeMarker() {
+        //remove markers before add
+        if let mapview = self.mapView {
+            mapview.clear()
+        }
+    }
+    
     //MARK: Google autocomplete delegate methods
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
@@ -173,7 +184,16 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
         if mapModel.sourceLatitude != nil && mapModel.sourceLongitude != nil && mapModel.destinationLatitude != nil && mapModel.destinationLongitude != nil {
             loadCameraView()
         }else if ((mapModel.sourceLatitude != nil && mapModel.sourceLongitude != nil) && (mapModel.destinationLatitude == nil && mapModel.destinationLongitude == nil)) {
+            
+            self.removeMarker()
+
             let cameraPosition = GMSCameraPosition.camera(withLatitude: self.mapModel.sourceLatitude!, longitude: self.mapModel.sourceLongitude!, zoom: 13)
+            
+            //Add marker
+            let sourcePosition = CLLocationCoordinate2DMake(self.mapModel.sourceLatitude!, self.mapModel.sourceLongitude!)
+            let markerSource = GMSMarker(position: sourcePosition)
+            markerSource.map = mapView
+            markerSource.title = self.mapModel.sourceTitle
             
             DispatchQueue.main.async {
                 self.mapView.animate(to: cameraPosition)

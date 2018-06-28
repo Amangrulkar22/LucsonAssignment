@@ -24,6 +24,19 @@ class SigninViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        resetTextfield()
+    }
+    
+    /// Reset textfield
+    func resetTextfield() {
+        txtEmail.text = ""
+        txtPassword.text = ""
+    }
+        
+    
     /// Signin actio method
     ///
     /// - Parameter sender: button object
