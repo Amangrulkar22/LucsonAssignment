@@ -185,6 +185,7 @@ class HomeViewController: UIViewController, GMSAutocompleteViewControllerDelegat
             loadCameraView()
         }else if ((mapModel.sourceLatitude != nil && mapModel.sourceLongitude != nil) && (mapModel.destinationLatitude == nil && mapModel.destinationLongitude == nil)) {
             
+            //remove marker 
             self.removeMarker()
 
             let cameraPosition = GMSCameraPosition.camera(withLatitude: self.mapModel.sourceLatitude!, longitude: self.mapModel.sourceLongitude!, zoom: 13)
